@@ -33,6 +33,8 @@ public class FuncDep {
 
 			for (int i = 0; i < attr.size(); i++) {
 			
+				//System.out.println(left_side.length() + "left side length");
+				
 				for (int m = 0; m < left_side.length(); m++) {
 					System.out.println( m + " " + left_side.charAt(m) );
 					
