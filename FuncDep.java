@@ -27,7 +27,11 @@ public class FuncDep {
 			String left_side = split_tokens[0] ;
 			String right_side = split_tokens[1] ;
 
-			
+	
+			//initialize closure to the attributes we are given
+
+			List<String> closure = attr;
+
 			//assume a match is found
 			int found = 1;
 
@@ -60,7 +64,7 @@ public class FuncDep {
 
 					if (found == 1) {
 						System.out.println("Found a match for " + left_side.charAt(m));
-						//union the left side to our FD
+						//union the left side to our closure
 					}
 				}
 			}
