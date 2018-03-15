@@ -17,12 +17,6 @@ public class FuncDep {
 	public List<String> findClosure(List<String> attr, List<String> fds) {
 		// TODO
 		//
-		/*
-		System.out.println("attributes:");
-		for (int i = 0; i < attr.size(); i++) {
-			System.out.println( i + " " + attr.get(i)  );
-		}
-		*/
 
 		System.out.println("fds:");
 		for (int j = 0; j < fds.size(); j++) {
@@ -69,24 +63,6 @@ public class FuncDep {
 				}
 			}
 			
-			/*
-
-			for (int n = 0; n < right_side.length(); n++) {
-				System.out.println( n + " " + right_side.charAt(n) );
-			}
-
-			*/
-
-			/*
-			int k = 0;
-			while (k < split_tokens.length) {
-				System.out.println( k + " " + split_tokens[k]);		
-			k++;
-			}
-			*/	
-
-		
-
 		}
 
 	return null;
