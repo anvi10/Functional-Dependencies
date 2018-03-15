@@ -33,41 +33,42 @@ public class FuncDep {
 			List<String> closure = attr;
 
 			//assume a match is found
-			int found = 1;
+			int not_found = 1;
 
-			for (int i = 0; i < attr.size(); i++) {
+			//for (int i = 0; i < attr.size(); i++) {
 			
 				//System.out.println(left_side.length() + "left side length");
 				
 				for (int m = 0; m < left_side.length(); m++) {
 					System.out.println( m + " " + left_side.charAt(m) );
 					
+					for (int i = 0; i < attr.size(); i++) {
+
 					//check for a match in every character of left_side.
 					//if no match is found at the end, we exit this loop and do not union this FD
 					//repeat for all FDs
 					
-					char c1 = attr.get(i).charAt(0);
-					char c2 = left_side.charAt(m);
-
-					if ( c1 == c2 ) {
-						found = 1; //match is found
-					} else {
-						found = 0; 
+						char c1 = attr.get(i).charAt(0);
+						char c2 = left_side.charAt(m);
+	
+						if ( c1 == c2 ) {
+							not_found = 0; //match is found
+						} 
 					//there is a character in the left side of this FD that doesnt match with anything in the X+
-					}
 
-					if (found == 0) {
+					} //closing for i loop
+					if (not_found == 1) {
 						System.out.println("No match for " + left_side.charAt(m)); 
 						//break out this loop and do not union this FD
-						break;
+					//	break;
 					}
 
-					if (found == 1) {
+					if (not_found == 0) {
 						System.out.println("Found a match for " + left_side.charAt(m));
 						//union the left side to our closure
 					}
-				}
-			}
+			//	}
+				}	
 			
 		}
 
