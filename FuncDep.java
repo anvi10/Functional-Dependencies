@@ -81,11 +81,19 @@ public class FuncDep {
 						//union the left side to our closure
 					}
 				}	
-		//  if not_found == 0,  then concatenate  
-		/*	if (not_found == 0) {
+		//  if not_found == 0,  then concatenate 
+		//  	URGENT!!! its not adding left_side?? why not? 
+			if (not_found == 0) {
 				closure.add( left_side);
-			} */	
+			} 
+		
+			System.out.println(closure.size());
 
+			int y = 0;
+			while (y < closure.size()) {
+				System.out.println(closure.get(y));
+			y++;
+			}
 			//System.out.println(closure);
 		}
 
