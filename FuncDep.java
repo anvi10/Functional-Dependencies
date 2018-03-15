@@ -25,6 +25,15 @@ public class FuncDep {
 		System.out.println("fds:");
 		for (int j = 0; j < fds.size(); j++) {
 			System.out.println( j + " " + fds.get(j) );
+			
+			String split_tokens[] = fds.get(j).split("->");
+		       	
+			int k = 0;
+			while (k < split_tokens.length) {
+				System.out.println( k + " " + split_tokens[k]);		
+			k++;
+			}	
+
 		}
 
 	return null;
