@@ -31,7 +31,11 @@ public class FuncDep {
 			//initialize closure to the attributes we are given
 
 			List<String> closure = attr;
-
+			
+/*			for (int x = 0; x < closure.size(); x ++) {
+				System.out.println(closure.get(x));
+			}
+*/			
 			//assume a match is found
 			int not_found = 1;
 
@@ -60,16 +64,21 @@ public class FuncDep {
 					if (not_found == 1) {
 						System.out.println("No match for " + left_side.charAt(m)); 
 						//break out this loop and do not union this FD
-					//	break;
+						break;
+
 					}
 
 					if (not_found == 0) {
 						System.out.println("Found a match for " + left_side.charAt(m));
 						//union the left side to our closure
 					}
-			//	}
 				}	
-			
+		//  if not_found == 0,  then concatenate  
+		/*	if (not_found == 0) {
+				closure.add( left_side);
+			} */	
+
+			//System.out.println(closure);
 		}
 
 	return null;
