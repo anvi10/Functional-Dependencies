@@ -2,6 +2,7 @@ import static java.lang.Character.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.ArrayList;
 
 
 public class FuncDep {
@@ -30,13 +31,20 @@ public class FuncDep {
 	
 			//initialize closure to the attributes we are given
 
-			List<String> closure = attr;
+		//	List<String> closure = attr;
+			List<String> closure = new ArrayList<String>(attr.size());			
 			
-/*			for (int x = 0; x < closure.size(); x ++) {
-				System.out.println(closure.get(x));
-			}
-*/			
-			//assume a match is found
+		//	System.out.println(closure.size());
+		//	System.out.println(attr.size());
+
+			int z = 0;
+			while ( z < attr.size() ) {
+				closure.add(attr.get(z));
+		//		System.out.println( z + " " + closure.get(z) );
+			z++;
+			}			
+			
+	
 			int not_found = 1;
 
 			//for (int i = 0; i < attr.size(); i++) {
