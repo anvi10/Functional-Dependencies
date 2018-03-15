@@ -27,12 +27,28 @@ public class FuncDep {
 			System.out.println( j + " " + fds.get(j) );
 			
 			String split_tokens[] = fds.get(j).split("->");
-		       	
+			
+			String left_side = split_tokens[0] ;
+			String right_side = split_tokens[1] ;
+			
+			for (int m = 0; m < left_side.length(); m++) {
+				System.out.println( m + " " + left_side.charAt(m) );
+			}
+
+			for (int n = 0; n < right_side.length(); n++) {
+				System.out.println( n + " " + right_side.charAt(n) );
+			}
+
+
+			/*
 			int k = 0;
 			while (k < split_tokens.length) {
 				System.out.println( k + " " + split_tokens[k]);		
 			k++;
-			}	
+			}
+			*/	
+
+		
 
 		}
 
