@@ -1,4 +1,4 @@
-
+import static java.lang.Character.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,11 +17,13 @@ public class FuncDep {
 	public List<String> findClosure(List<String> attr, List<String> fds) {
 		// TODO
 		//
+		/*
 		System.out.println("attributes:");
 		for (int i = 0; i < attr.size(); i++) {
 			System.out.println( i + " " + attr.get(i)  );
 		}
-		
+		*/
+
 		System.out.println("fds:");
 		for (int j = 0; j < fds.size(); j++) {
 			System.out.println( j + " " + fds.get(j) );
@@ -30,15 +32,50 @@ public class FuncDep {
 			
 			String left_side = split_tokens[0] ;
 			String right_side = split_tokens[1] ;
+
 			
-			for (int m = 0; m < left_side.length(); m++) {
-				System.out.println( m + " " + left_side.charAt(m) );
+			//assume a match is found
+			int found = 1;
+
+			for (int i = 0; i < attr.size(); i++) {
+			
+				for (int m = 0; m < left_side.length(); m++) {
+					System.out.println( m + " " + left_side.charAt(m) );
+					
+					//check for a match in every character of left_side.
+					//if no match is found at the end, we exit this loop and do not union this FD
+					//repeat for all FDs
+					
+					char c1 = attr.get(i).charAt(0);
+					char c2 = left_side.charAt(m);
+
+					if ( c1 == c2 ) {
+						found = 1; //match is found
+					} else {
+						found = 0; 
+					//there is a character in the left side of this FD that doesnt match with anything in the X+
+					}
+
+					if (found == 0) {
+						System.out.println("No match for " + left_side.charAt(m)); 
+						//break out this loop and do not union this FD
+						break;
+					}
+
+					if (found == 1) {
+						System.out.println("Found a match for " + left_side.charAt(m));
+						//union the left side to our FD
+					}
+				}
 			}
+			
+			/*
 
 			for (int n = 0; n < right_side.length(); n++) {
 				System.out.println( n + " " + right_side.charAt(n) );
 			}
 
+			*/
 
 			/*
 			int k = 0;
