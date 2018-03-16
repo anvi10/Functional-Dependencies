@@ -59,13 +59,15 @@ public class FuncDep {
 				for (int m = 0; m < left_side.length(); m++) {
 					System.out.println( m + " " + left_side.charAt(m) );
 					
-					for (int i = 0; i < attr.size(); i++) {
+					//changing from attr to closure
+					for (int i = 0; i < closure.size(); i++) {
 
 					//check for a match in every character of left_side.
 					//if no match is found at the end, we exit this loop and do not union this FD
 					//repeat for all FDs
 					
-						char c1 = attr.get(i).charAt(0);
+						//changing from attr to closure
+						char c1 = closure.get(i).charAt(0);
 						char c2 = left_side.charAt(m);
 	
 						if ( c1 == c2 ) {
