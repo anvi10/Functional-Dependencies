@@ -1,4 +1,5 @@
 import static java.lang.Character.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -18,6 +19,14 @@ public class FuncDep {
 	public List<String> findClosure(List<String> attr, List<String> fds) {
 		// TODO
 		//
+		
+		List<String> closure = new ArrayList <String>(attr.size());
+
+		int z = 0;
+		while ( z < attr.size()) {
+			closure.add(attr.get(z));
+		z++;
+		}
 
 		System.out.println("fds:");
 		for (int j = 0; j < fds.size(); j++) {
@@ -31,18 +40,14 @@ public class FuncDep {
 	
 			//initialize closure to the attributes we are given
 
-		//	List<String> closure = attr;
-			List<String> closure = new ArrayList<String>(attr.size());			
+			/*List<String> closure = new ArrayList<String>(attr.size());			
 			
-		//	System.out.println(closure.size());
-		//	System.out.println(attr.size());
 
 			int z = 0;
 			while ( z < attr.size() ) {
 				closure.add(attr.get(z));
-		//		System.out.println( z + " " + closure.get(z) );
 			z++;
-			}			
+			} */			
 			
 	
 			int not_found = 1;
@@ -81,23 +86,31 @@ public class FuncDep {
 						//union the left side to our closure
 					}
 				}	
-		//  if not_found == 0,  then concatenate 
-		//  	URGENT!!! its not adding left_side?? why not? 
-			if (not_found == 0) {
-				closure.add( left_side);
-			} 
+		System.out.println( "Left side is " + left_side); 
+			
 		
-			System.out.println(closure.size());
+			String[] splitted = right_side.split("(?!^)");
+
+			if (not_found == 0) {
+				System.out.println("not found is 0");
+				for ( int v = 0; v < splitted.length; v++  ) {
+					closure.add( splitted[v] ) ;
+				} //HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! only add if it isnt already in the closure
+			}
+
+		
+
 
 			int y = 0;
 			while (y < closure.size()) {
-				System.out.println(closure.get(y));
+				System.out.println( "content of closure at " + y + "is " + closure.get(y));
 			y++;
 			}
 			//System.out.println(closure);
 		}
+		closure = new ArrayList<String>(new HashSet<String>(closure));
 
-	return null;
+	return closure;
 	}
 	
 	/**
