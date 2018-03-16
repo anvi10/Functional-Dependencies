@@ -28,9 +28,7 @@ public class FuncDep {
 		z++;
 		}
 
-		System.out.println("fds:");
 		for (int j = 0; j < fds.size(); j++) {
-			System.out.println( j + " " + fds.get(j) );
 			
 			String split_tokens[] = fds.get(j).split("->");
 			
@@ -40,33 +38,20 @@ public class FuncDep {
 	
 			//initialize closure to the attributes we are given
 
-			/*List<String> closure = new ArrayList<String>(attr.size());			
-			
-
-			int z = 0;
-			while ( z < attr.size() ) {
-				closure.add(attr.get(z));
-			z++;
-			} */			
 			
 	
 			int not_found = 1;
 
-			//for (int i = 0; i < attr.size(); i++) {
 			
-				//System.out.println(left_side.length() + "left side length");
 				
 				for (int m = 0; m < left_side.length(); m++) {
-					System.out.println( m + " " + left_side.charAt(m) );
 					
-					//changing from attr to closure
 					for (int i = 0; i < closure.size(); i++) {
 
 					//check for a match in every character of left_side.
 					//if no match is found at the end, we exit this loop and do not union this FD
 					//repeat for all FDs
 					
-						//changing from attr to closure
 						char c1 = closure.get(i).charAt(0);
 						char c2 = left_side.charAt(m);
 	
@@ -77,39 +62,28 @@ public class FuncDep {
 
 					} //closing for i loop
 					if (not_found == 1) {
-						System.out.println("No match for " + left_side.charAt(m)); 
 						//break out this loop and do not union this FD
 						break;
 
 					}
 
-					if (not_found == 0) {
-						System.out.println("Found a match for " + left_side.charAt(m));
-						//union the left side to our closure
-					}
 				}	
-		System.out.println( "Left side is " + left_side); 
 			
 		
 			String[] splitted = right_side.split("(?!^)");
 
 			if (not_found == 0) {
-				System.out.println("not found is 0");
 				for ( int v = 0; v < splitted.length; v++  ) {
 					closure.add( splitted[v] ) ;
-				} //HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! only add if it isnt already in the closure
+				} 
 			}
 
 		
 
 
-			int y = 0;
-			while (y < closure.size()) {
-				System.out.println( "content of closure at " + y + "is " + closure.get(y));
-			y++;
-			}
-			//System.out.println(closure);
 		}
+
+		//converting from a list to a set and back will remove all the duplicate attributes
 		closure = new ArrayList<String>(new HashSet<String>(closure));
 
 	return closure;

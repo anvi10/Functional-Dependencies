@@ -13,7 +13,7 @@ B->D,D->A
 ---------------------
 Expected Output of Input3.txt
 ---------------------
-A
+A,B
 
 ---------------------
 Expected Output of Input4.txt
