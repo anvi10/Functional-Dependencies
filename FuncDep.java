@@ -109,36 +109,38 @@ public class FuncDep {
 		// TODO
         	List<String> key = new ArrayList <String>(attr.size());
 		
-		List<String> temp = new ArrayList <String>();
+		List<String> temp = new ArrayList <String>(attr.size());
 
 		int z = 0;
 		while ( z < attr.size()) {
 			key.add(attr.get(z));
-			System.out.println( key.get(z) );
+			temp.add(attr.get(z));
 		z++;
 		}
+
+		//now key is equal to the original attributes
         
-		/*
+		
 
 		for (int x = 0; x < key.size(); x++) {
 		
 		//reset temp for every iteration of x
 
-			int i = 0;
-			while (i < key.size()) {
-				temp.add(attr.get(z));
-			i++;	
-			}
 
+			int t  = temp.size();
+			System.out.println(t);	
+			
 			temp.remove(x);
 
 			for (int g = 0; g < temp.size(); g++) {
 				System.out.println( g + " value " + temp.get(g));
-			}	
+			} 	
+
+			temp.add(x, key.get(x));
 
 			//if temp's closure is the same as key's closure, save the new key as temp.
-
-		} */
+			//then reinsert key.get(x) into temp at index x
+		} 
 
 	return null;
 	}
