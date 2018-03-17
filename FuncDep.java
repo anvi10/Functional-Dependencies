@@ -114,9 +114,11 @@ public class FuncDep {
 		int z = 0;
 		while ( z < attr.size()) {
 			key.add(attr.get(z));
+			System.out.println( key.get(z) );
 		z++;
 		}
         
+		/*
 
 		for (int x = 0; x < key.size(); x++) {
 		
@@ -136,7 +138,7 @@ public class FuncDep {
 
 			//if temp's closure is the same as key's closure, save the new key as temp.
 
-		}
+		} */
 
 	return null;
 	}
