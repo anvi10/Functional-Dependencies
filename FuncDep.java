@@ -77,10 +77,6 @@ public class FuncDep {
 					closure.add( splitted[v] ) ;
 				} 
 			}
-
-		
-
-
 		}
 
 		//converting from a list to a set and back will remove all the duplicate attributes
@@ -109,10 +105,40 @@ public class FuncDep {
 		 * @param fds, list of functional dependencies of format "AB->XY"
 		 * @return list of attributes that defines the key of relation R
 		 */
-		public List<String> findKey(List<String> attr, List<String> fds) {
+    	public List<String> findKey(List<String> attr, List<String> fds) {
 		// TODO
+        	List<String> key = new ArrayList <String>(attr.size());
+		
+		List<String> temp = new ArrayList <String>();
 
-		return null;
+		int z = 0;
+		while ( z < attr.size()) {
+			key.add(attr.get(z));
+		z++;
+		}
+        
+
+		for (int x = 0; x < key.size(); x++) {
+		
+		//reset temp for every iteration of x
+
+			int i = 0;
+			while (i < key.size()) {
+				temp.add(attr.get(z));
+			i++;	
+			}
+
+			temp.remove(x);
+
+			for (int g = 0; g < temp.size(); g++) {
+				System.out.println( g + " value " + temp.get(g));
+			}	
+
+			//if temp's closure is the same as key's closure, save the new key as temp.
+
+		}
+
+	return null;
 	}
 	
 	/**
