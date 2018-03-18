@@ -120,7 +120,8 @@ public class FuncDep {
 
 		//now key is equal to the original attributes
        		
-	       	int key_size = key.size();	
+	       	int key_size = key.size();
+	        int removal_count=0;	
 		
 		for (int x = 0; x < attr.size(); x++) {
 			
@@ -146,9 +147,10 @@ public class FuncDep {
             
             if (  closure_attr.equals(closure_temp) ){
                 System.out.println("key is removed : "+ x);
-                System.out.println("key being removed : "+ key.get(x));
-                key.remove(x);
+                System.out.println("key being removed : "+ attr.get(x));
+                key.remove( attr.get(x) );
 		key_size--;
+		removal_count++;
                 System.out.println("key is successfully removed");
             }
 
