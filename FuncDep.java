@@ -131,34 +131,16 @@ public class FuncDep {
             
             List<String> closure_attr = findClosure(attr,fds);
             List<String> closure_temp = findClosure(temp,fds);
-            
-            for (int i = 0; i < closure_attr.size(); i++) {
-                System.out.println("closure attr is " + closure_attr.get(i));
-            }
-            
-            System.out.println();
-            
-            for (int i = 0; i < closure_temp.size(); i++) {
-                System.out.println("closure temp is " + closure_temp.get(i));
-            }
 
-            System.out.println();
-
-            
             if (  closure_attr.equals(closure_temp) ){
-                System.out.println("key is removed : "+ x);
-                System.out.println("key being removed : "+ attr.get(x));
+
                 key.remove( attr.get(x) );
 		key_size--;
 		removal_count++;
-                System.out.println("key is successfully removed");
+              
             }
 
-	    for (int i = 0; i < key.size(); i++) {
-		System.out.println("Key's elements are " + key.get(i) );
-	    }
 
-	    System.out.println();
             
             //reset temp for every iteration of x
 			temp.add(x, attr.get(x));
