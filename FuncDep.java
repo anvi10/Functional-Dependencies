@@ -119,30 +119,51 @@ public class FuncDep {
 		}
 
 		//now key is equal to the original attributes
-        
+       		
+	       	int key_size = key.size();	
 		
-
-		for (int x = 0; x < key.size(); x++) {
-		
-		//reset temp for every iteration of x
-
-
-			int t  = temp.size();
-			System.out.println(t);	
+		for (int x = 0; x < attr.size(); x++) {
 			
 			temp.remove(x);
-
-			for (int g = 0; g < temp.size(); g++) {
-				System.out.println( g + " value " + temp.get(g));
-			} 	
-
-			temp.add(x, key.get(x));
-
+            
 			//if temp's closure is the same as key's closure, save the new key as temp.
-			//then reinsert key.get(x) into temp at index x
+            
+            List<String> closure_attr = findClosure(attr,fds);
+            List<String> closure_temp = findClosure(temp,fds);
+            
+            for (int i = 0; i < closure_attr.size(); i++) {
+                System.out.println("closure attr is " + closure_attr.get(i));
+            }
+            
+            System.out.println();
+            
+            for (int i = 0; i < closure_temp.size(); i++) {
+                System.out.println("closure temp is " + closure_temp.get(i));
+            }
+
+            System.out.println();
+
+            
+            if (  closure_attr.equals(closure_temp) ){
+                System.out.println("key is removed : "+ x);
+                System.out.println("key being removed : "+ key.get(x));
+                key.remove(x);
+		key_size--;
+                System.out.println("key is successfully removed");
+            }
+
+	    for (int i = 0; i < key.size(); i++) {
+		System.out.println("Key's elements are " + key.get(i) );
+	    }
+
+	    System.out.println();
+            
+            //reset temp for every iteration of x
+			temp.add(x, attr.get(x));
+
 		} 
 
-	return null;
+	return key;
 	}
 	
 	/**
