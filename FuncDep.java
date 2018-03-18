@@ -93,8 +93,20 @@ public class FuncDep {
 	 * @return minimum cover over set fds
 	 */
 	public List<String> findMinCover(List<String> fds) {
-		// TODO
-		return null;
+
+		//Set F equal to attr
+
+		List<String> f = new ArrayList <String>(attr.size());
+
+		List<String> temp = new ArrayList <String>(attr.size());
+
+		int z = 0;
+		while (z < attr.size()) {
+			f.add(attr.get(z));
+			temp.add(attr.get(z));
+		}
+
+	return null;
 	}
 	
 		/**
