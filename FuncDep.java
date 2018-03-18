@@ -96,15 +96,29 @@ public class FuncDep {
 
 		//Set F equal to attr
 
-		List<String> f = new ArrayList <String>(attr.size());
+		List<String> f = new ArrayList <String>(fds.size());
 
-		List<String> temp = new ArrayList <String>(attr.size());
+		List<String> temp = new ArrayList <String>(fds.size());
 
 		int z = 0;
-		while (z < attr.size()) {
-			f.add(attr.get(z));
-			temp.add(attr.get(z));
-		}
+		while (z < fds.size()) {
+			f.add(fds.get(z));
+			temp.add(fds.get(z));
+		} 
+        /*
+        for (int j = 0; j < fds.size(); j++) {
+			
+			String split_tokens[] = fds.get(j).split("->");
+			
+			String left_side = split_tokens[0] ;
+			String right_side = split_tokens[1] ;
+            
+            if (right_side.length() > 1) {
+                System.out.println( "The long funct dep is " + fds.get(j) + " and the right side of it is " + right_side  );
+            } else {
+                System.out.println( "The short funct dep is " + fds.get(j) + " and the right side of it is " + right_side  );
+            }
+        } */
 
 	return null;
 	}
