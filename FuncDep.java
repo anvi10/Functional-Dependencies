@@ -94,18 +94,19 @@ public class FuncDep {
 	 */
 	public List<String> findMinCover(List<String> fds) {
 
-		//Set F equal to attr
+		//Set F equal to fds
 
-		List<String> f = new ArrayList <String>(fds.size());
+		List<String> f = new ArrayList <String>(fds.size()); //this will be our min cover
 
-		List<String> temp = new ArrayList <String>(fds.size());
+		List<String> temp = new ArrayList <String>(fds.size()); //we will manipulate this and remove variables
 
 		int z = 0;
 		while (z < fds.size()) {
 			f.add(fds.get(z));
 			temp.add(fds.get(z));
+        z++;
 		} 
-        /*
+        
         for (int j = 0; j < fds.size(); j++) {
 			
 			String split_tokens[] = fds.get(j).split("->");
@@ -115,10 +116,21 @@ public class FuncDep {
             
             if (right_side.length() > 1) {
                 System.out.println( "The long funct dep is " + fds.get(j) + " and the right side of it is " + right_side  );
-            } else {
+                
+                //break the long ones into different fds
+                
+                f.remove(j); //remove the FD at index j and start splitting it into different fds
+                
+                int l = right_side.length() ;
+                int iter = 0;
+                while ( iter < l ) {
+                    f.add( left_side + "->" + right_side.charAt(iter) ); //double check right_side.charAt(iter)  
+                }
+                
+            } else { // else block exists for debugging purposes only 
                 System.out.println( "The short funct dep is " + fds.get(j) + " and the right side of it is " + right_side  );
             }
-        } */
+        } 
 
 	return null;
 	}
@@ -133,7 +145,7 @@ public class FuncDep {
 		 */
     	public List<String> findKey(List<String> attr, List<String> fds) {
 		// TODO
-        	List<String> key = new ArrayList <String>(attr.size());
+        List<String> key = new ArrayList <String>(attr.size());
 		
 		List<String> temp = new ArrayList <String>(attr.size());
 
