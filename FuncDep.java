@@ -172,7 +172,7 @@ public class FuncDep {
                     //remove j from the left side , and create a funct dep of the new left side -> right side, and add the new one to temp
                     
                     String new_left = left_side.substring(0, j) + left_side.substring(j+1, left_side.length() );
-                   // System.out.println(new_left + "iter " + j);
+                   
                     
                     temp.add( i, new_left + "->" + right_side );  //its now the value at i
                     
@@ -278,7 +278,7 @@ public class FuncDep {
 
                     
 
-                    System.out.println ( "entered for loop of step 4!!!!");
+                 
                     //save temp.get(i) as a string
                     
                     String s = temp2.get(i); //s is our saved dependency
@@ -302,7 +302,7 @@ public class FuncDep {
                         
                         for (int n = 0; n < g.length(); n++) {
                             if ( Character.isLetter(g.charAt(n)) ) {
-                                System.out.println( "for temp The character is " + g.charAt(n) + " index " + n);
+          
                                 temp_attr.add(Character.toString(g.charAt(n)));
                             }
                         }
@@ -310,7 +310,7 @@ public class FuncDep {
                     
                     temp_attr = new ArrayList<String>(new HashSet<String>(temp_attr)); //change to a hashset and back to delete duplicates
                     
-                    System.out.println();
+                   
                     
                                         
                     for (int e = 0; e < f.size(); e++) {
@@ -318,7 +318,7 @@ public class FuncDep {
                         
                         for (int n = 0; n < g.length(); n++) {
                             if ( Character.isLetter(g.charAt(n)) ) {
-                                System.out.println( "for f The character is " + g.charAt(n) + " index n");
+             
                                 f_attr.add(Character.toString(g.charAt(n)));
                             }
                         }
@@ -329,32 +329,29 @@ public class FuncDep {
                     //if it is the same as the original closure, we replace the old left side with the new left side in f
                     
                     if (findClosure(temp_attr, temp2).equals(findClosure(f_attr,f))) {
-                        System.out.println("closure is equal"); 
-                        System.out.println(f.get(i));
+         
                         f.remove(i);;
-                    } else {
-                        System.out.println("closure is not equal");
-                    }
+                    } 
                     
-                    System.out.println();
+    
                     
                     boolean breakout = false;
                     
                     for (int y = 0 ; y < f.size(); y++) {
-                        System.out.println ("The values of f are now " + f.get(y) + " at index " + y);
+   
                         String splitted_tokens[] = f.get(i).split("->");
                         String left_attributes = splitted_tokens[0];
                         if (left_attributes.length() == 1 ) {
-                            System.out.println("breakout is true");
+                           
                             breakout = true;
                         } else {
                             breakout = false;
-                            System.out.println("break out is false. breaking out of this loop " + y) ;
+                         
                             break;
                         }
                     }
                     
-                    System.out.println("value of breakout is " + breakout);
+             
                     
                     //there are no left side attributes greater than size 1, so we are completely leaving this for loop
                     if (breakout == true) 
