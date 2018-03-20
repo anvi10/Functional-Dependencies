@@ -154,8 +154,81 @@ public class FuncDep {
             //left_side length must be greater than 1, or else if we remove every attribute B (and theres only one), the left side would be null
             if (left_side.length() > 1) {
                 System.out.println("left side is " + left_side + " and length is " + left_side.length() + " iteration number " + i);
+                
+                for (int j = 0; j < left_side.length(); j++) {
+                    
+
+                    System.out.println ( "entered for loop");
+                    //save temp.get(i) as a string
+                    
+                    String s = temp.get(i); //s is our saved dependency
+                    
+                    //remove the funct dep i from temp
+                    
+                    temp.remove(i);
+                    
+                    for (int t = 0; t < temp.size(); t++) {
+                        System.out.println( temp.get(t) + " is temps value at " + t  + "after removing i"); 
+                    }
+                    
+                    System.out.println();
+                    
+                    //remove j from the left side , and create a funct dep of the new left side -> right side, and add the new one to temp
+                    
+                    String new_left = left_side.substring(0, j) + left_side.substring(j+1, left_side.length() );
+                   // System.out.println(new_left + "iter " + j);
+                    
+                    temp.add( new_left + "->" + right_side );  //its now the value at i
+                    
+                    for (int t = 0; t < temp.size(); t++) {
+                        System.out.println( temp.get(t) + " is temps value at " + t + "after adding our newleft and new right" ); 
+                    }
+                    
+                     System.out.println();
+                    
+                                        
+                    //find the closure of this new temp. 
+                    //if it is the same as the original closure, we replace the old left side with the new left side in f
+                    
+                    //we re-add funct dep i to temp, to keep the size right so we dont run into array index out of bounds issues in the following iterations
+                    
+                    temp.remove(i); //we need to again remove the new thing we changed to. at most, we are manipulating our final answer f
+                    
+                    for (int t = 0; t < temp.size(); t++) {
+                        System.out.println( temp.get(t) + " is temps value at " + t + "after removing our newleft and new right" ); 
+                    }
+                    
+                     System.out.println();
+                    
+
+                    temp.add(i, s);
+                    
+                    for (int t = 0; t < temp.size(); t++) {
+                        System.out.println( temp.get(t) + " is temps value at " + t  + " after adding back s"); 
+                    }
+                    
+                     System.out.println();
+                    
+                }
+                
             }
+            
+            
         }
+        
+        //here is how we will save the strings in the above loop
+         String tester = "Tedibear";
+                for (int j = 0; j < tester.length(); j++ ) {
+                   
+                    String tester_left = tester.substring(0, j);
+                    String tester_right = tester.substring(j+1, tester.length()  );
+                    //String tester_remove = tester.substring(j,j+1);
+                
+                   // System.out.println ("tester left " + tester_left + " tester right " + tester_right + " remove " + tester_remove );
+                    
+                    String removed = tester_left + tester_right;
+                    //System.out.println(removed + " " + j);
+                }
         
 
 	return null;
