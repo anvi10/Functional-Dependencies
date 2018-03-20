@@ -188,10 +188,44 @@ public class FuncDep {
                     
                                         
                     //find the closure of this new temp. 
+                    
+                    //since findClosure takes two params, attr and fds, we need to make attr string lists for both temp and for f
+                    
+                    
+                    List<String> temp_attr = new ArrayList <String>();
+                    List<String> f_attr = new ArrayList <String>();
+                    
+                    for (int e = 0; e < temp.size(); e++) {
+                        String g = temp.get(e);
+                        
+                        for (int n = 0; n < g.length(); n++) {
+                            if ( Character.isLetter(g.charAt(n)) ) {
+                                System.out.println( " for temp The character is " + g.charAt(n) + " index n");
+                                temp_attr.add(Character.toString(g.charAt(n)));
+                            }
+                        }
+                    }
+                    
+                    System.out.println();
+                    
+                                        
+                    for (int e = 0; e < f.size(); e++) {
+                        String g = f.get(e);
+                        
+                        for (int n = 0; n < g.length(); n++) {
+                            if ( Character.isLetter(g.charAt(n)) ) {
+                                System.out.println( "for f The character is " + g.charAt(n) + " index n");
+                                f_attr.add(Character.toString(g.charAt(n)));
+                            }
+                        }
+                    }
+                    
+                    
                     //if it is the same as the original closure, we replace the old left side with the new left side in f
                     
+                                        
                     //we re-add funct dep i to temp, to keep the size right so we dont run into array index out of bounds issues in the following iterations
-                    
+            
                     temp.remove(i); //we need to again remove the new thing we changed to. at most, we are manipulating our final answer f
                     
                     for (int t = 0; t < temp.size(); t++) {
