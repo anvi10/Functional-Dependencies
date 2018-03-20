@@ -176,9 +176,6 @@ public class FuncDep {
                     
                     temp.add( i, new_left + "->" + right_side );  //its now the value at i
                     
-
-
-                    
                                         
                     //find the closure of this new temp. 
                     
@@ -200,8 +197,6 @@ public class FuncDep {
                     }
                     
                     temp_attr = new ArrayList<String>(new HashSet<String>(temp_attr)); //change to a hashset and back to delete duplicates
-                    
-                    
                     
                                         
                     for (int e = 0; e < f.size(); e++) {
@@ -258,8 +253,6 @@ public class FuncDep {
                     //end of new if statement
                     }
                   
-                
-                
             }
             
             
@@ -367,7 +360,7 @@ public class FuncDep {
         
         
         
-
+        f = new ArrayList<String>(new HashSet<String>(f));
 	return f;
 	}
 	
@@ -409,9 +402,7 @@ public class FuncDep {
 
                 key.remove( attr.get(x) );
 
-              
             }
-
 
             
             //reset temp for every iteration of x
@@ -431,7 +422,13 @@ public class FuncDep {
 	 * @return List of relations, where each relation is a list of attributes.
 	 */
 	public List<List<String>> get3NFForm(List<String> attr, List<String> fds) {
-		//TODO
+        
+		//step 1 of algorithm
+        List<String> g = findMinCover(fds);
+        
+        for (int i = 0; i < g.size(); i++) {
+           System.out.println(  "the value at " + i + " is "  + g.get(i)  );
+        }
 		return null;
 	}
 	
