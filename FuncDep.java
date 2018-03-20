@@ -138,15 +138,17 @@ public class FuncDep {
         } 
         
         //populate temp with the values of our current f
+      
         int c = 0;
         while (c < f.size()) {
             temp.add(f.get(c));
         c++;
-        }
+        } 
         
         //Step 3 of algorithm
         for (int i = 0; i < f.size(); i++) {
-        
+            
+
             
             String split_tokens[] = f.get(i).split("->");
             String left_side = split_tokens[0];
@@ -217,7 +219,7 @@ public class FuncDep {
                         f.add(i, new_left + "->" + right_side);
                     } 
                     
-                 
+                 /*
                     
                     boolean breakout = false;
                     
@@ -239,7 +241,7 @@ public class FuncDep {
                     
                     //there are no left side attributes greater than size 1, so we are completely leaving this for loop
                     if (breakout == true) 
-                        break;
+                        break; */
                     
                     //we re-add funct dep i to temp, to keep the size right so we dont run into array index out of bounds issues in the following iterations
             
