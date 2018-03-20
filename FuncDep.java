@@ -230,20 +230,20 @@ public class FuncDep {
                     boolean breakout = false;
                     
                     for (int y = 0 ; y < f.size(); y++) {
-                        System.out.println ("The values of f are now " + f.get(y) + " at index " + y);
+          
                         String splitted_tokens[] = f.get(i).split("->");
                         String left_attributes = splitted_tokens[0];
                         if (left_attributes.length() == 1 ) {
-                            System.out.println("breakout is true");
+             
                             breakout = true;
                         } else {
                             breakout = false;
-                            System.out.println("break out is false. breaking out of this loop " + y) ;
+            
                             break;
                         }
                     }
                     
-                    System.out.println("value of breakout is " + breakout);
+
                     
                     //there are no left side attributes greater than size 1, so we are completely leaving this for loop
                     if (breakout == true) 
