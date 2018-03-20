@@ -158,9 +158,6 @@ public class FuncDep {
                 
                 for (int j = 0; j < left_side.length(); j++) {
                     
-                    
-
-          
                     //save temp.get(i) as a string
                     
                     String s = temp.get(i); //s is our saved dependency
@@ -425,10 +422,21 @@ public class FuncDep {
         
 		//step 1 of algorithm
         List<String> g = findMinCover(fds);
+        List<String> d = new ArrayList <String>();
         
         for (int i = 0; i < g.size(); i++) {
            System.out.println(  "the value at " + i + " is "  + g.get(i)  );
+            String split_tokens[] = g.get(i).split("->");
+            String left_side = split_tokens[0];
+            String right_side = split_tokens[1] ;
+            
+            d.add(left_side + right_side);
+            System.out.println(d.get(i) + " is ds value");
+            
         }
+        
+        List<String> key = findKey(attr, fds);
+        System.out.println("key is " + key);
 		return null;
 	}
 	

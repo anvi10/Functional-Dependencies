@@ -1,1 +1,1 @@
-A->B,ACD->E,EF->G,EF->H,ACD->E,ACDF->G
+B->A,D->A,AB->D

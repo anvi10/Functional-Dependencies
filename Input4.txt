@@ -1,2 +1,2 @@
-A,B,C,D,E,F,G
-A->CDE,B->FG,AB->CDEFG
+A,B,D
+B->A,D->A,AB->D
