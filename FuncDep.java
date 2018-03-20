@@ -206,6 +206,8 @@ public class FuncDep {
                         }
                     }
                     
+                    temp_attr = new ArrayList<String>(new HashSet<String>(temp_attr)); //change to a hashset and back to delete duplicates
+                    
                     System.out.println();
                     
                                         
@@ -220,10 +222,17 @@ public class FuncDep {
                         }
                     }
                     
+                    f_attr = new ArrayList<String>(new HashSet<String>(f_attr));
                     
                     //if it is the same as the original closure, we replace the old left side with the new left side in f
                     
-                                        
+                    if (findClosure(temp_attr, temp).equals(findClosure(f_attr,f))) {
+                        System.out.println("closure is equal");
+                        
+                    } else {
+                        System.out.println("closure is not equal");
+                    }
+                    
                     //we re-add funct dep i to temp, to keep the size right so we dont run into array index out of bounds issues in the following iterations
             
                     temp.remove(i); //we need to again remove the new thing we changed to. at most, we are manipulating our final answer f
