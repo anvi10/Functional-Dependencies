@@ -178,7 +178,7 @@ public class FuncDep {
                     String new_left = left_side.substring(0, j) + left_side.substring(j+1, left_side.length() );
                    // System.out.println(new_left + "iter " + j);
                     
-                    temp.add( new_left + "->" + right_side );  //its now the value at i
+                    temp.add( i, new_left + "->" + right_side );  //its now the value at i
                     
                     for (int t = 0; t < temp.size(); t++) {
                         System.out.println( temp.get(t) + " is temps value at " + t + "after adding our newleft and new right" ); 
@@ -228,6 +228,10 @@ public class FuncDep {
                     
                     if (findClosure(temp_attr, temp).equals(findClosure(f_attr,f))) {
                         System.out.println("closure is equal"); 
+                        System.out.println(f.get(i));
+                        System.out.println( new_left + "->" + right_side );
+                        f.remove(i);
+                        f.add(i, new_left + "->" + right_side);
                     } else {
                         System.out.println("closure is not equal");
                     }
@@ -272,8 +276,11 @@ public class FuncDep {
                     //System.out.println(removed + " " + j);
                 }
         
+        for (int w = 0; w <f.size(); w++) {
+            System.out.println(f.get(w) + " hey " + w);
+        }
 
-	return null;
+	return f;
 	}
 	
 		/**
