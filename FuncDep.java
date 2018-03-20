@@ -153,7 +153,7 @@ public class FuncDep {
             
             //left_side length must be greater than 1, or else if we remove every attribute B (and theres only one), the left side would be null
             if (left_side.length() > 1) {
-                System.out.println("left side is " + left_side + " and length is " + left_side.length() + " iteration number " + i);
+
                 
                 for (int j = 0; j < left_side.length(); j++) {
                     
@@ -166,12 +166,6 @@ public class FuncDep {
                     //remove the funct dep i from temp
                     
                     temp.remove(i);
-                    
-                    for (int t = 0; t < temp.size(); t++) {
-                        System.out.println( temp.get(t) + " is temps value at " + t  + "after removing i"); 
-                    }
-                    
-                    System.out.println();
                     
                     //remove j from the left side , and create a funct dep of the new left side -> right side, and add the new one to temp
                     
@@ -200,7 +194,7 @@ public class FuncDep {
                         
                         for (int n = 0; n < g.length(); n++) {
                             if ( Character.isLetter(g.charAt(n)) ) {
-                                System.out.println( " for temp The character is " + g.charAt(n) + " index n");
+                                System.out.println( "for temp The character is " + g.charAt(n) + " index " + n);
                                 temp_attr.add(Character.toString(g.charAt(n)));
                             }
                         }
@@ -236,24 +230,18 @@ public class FuncDep {
                         System.out.println("closure is not equal");
                     }
                     
+                    System.out.println();
+                    
+                    for (int y = 0 ; y < f.size(); y++) {
+                        System.out.println ("The values of f are now " + f.get(y) + " at index " + y);
+                    }
+                    
                     //we re-add funct dep i to temp, to keep the size right so we dont run into array index out of bounds issues in the following iterations
             
                     temp.remove(i); //we need to again remove the new thing we changed to. at most, we are manipulating our final answer f
-                    
-                    for (int t = 0; t < temp.size(); t++) {
-                        System.out.println( temp.get(t) + " is temps value at " + t + "after removing our newleft and new right" ); 
-                    }
-                    
-                     System.out.println();
-                    
-
+                
                     temp.add(i, s);
                     
-                    for (int t = 0; t < temp.size(); t++) {
-                        System.out.println( temp.get(t) + " is temps value at " + t  + " after adding back s"); 
-                    }
-                    
-                     System.out.println();
                     
                 }
                 
@@ -261,21 +249,7 @@ public class FuncDep {
             
             
         }
-        
-        //here is how we will save the strings in the above loop
-         String tester = "Tedibear";
-                for (int j = 0; j < tester.length(); j++ ) {
-                   
-                    String tester_left = tester.substring(0, j);
-                    String tester_right = tester.substring(j+1, tester.length()  );
-                    //String tester_remove = tester.substring(j,j+1);
-                
-                   // System.out.println ("tester left " + tester_left + " tester right " + tester_right + " remove " + tester_remove );
-                    
-                    String removed = tester_left + tester_right;
-                    //System.out.println(removed + " " + j);
-                }
-        
+
         for (int w = 0; w <f.size(); w++) {
             System.out.println(f.get(w) + " hey " + w);
         }
