@@ -100,7 +100,6 @@ public class FuncDep {
 
 		List<String> temp = new ArrayList <String>(fds.size()); //we will manipulate this and remove variables for step3 of algorithm
 
-        List<String> temp2 = new ArrayList <String>(fds.size()); //we will manipulate this and remove variables for step4 of algorithm
         
         //Step 1 of algorithm
 		int z = 0;
@@ -142,7 +141,6 @@ public class FuncDep {
         int c = 0;
         while (c < f.size()) {
             temp.add(f.get(c));
-            temp2.add(f.get(c));
         c++;
         }
         
@@ -275,19 +273,26 @@ public class FuncDep {
         }
 
         
+        
+        List<String> temp2 = new ArrayList <String>(f.size()); //we will manipulate this and remove variables for step4 of algorithm
+        
+        for (int x = 0; x <f.size(); x++) {
+            temp2.add(f.get(x));
+        }
+        
         //step 4 of algorithm
          for (int i = 0; i < f.size(); i++) {
 
                     
 
-                    System.out.println ( "entered for loop");
+                    System.out.println ( "entered for loop of step 4!!!!");
                     //save temp.get(i) as a string
                     
-                    String s = temp.get(i); //s is our saved dependency
+                    String s = temp2.get(i); //s is our saved dependency
                     
                     //remove the funct dep i from temp
                     
-                    temp.remove(i);
+                    temp2.remove(i);
                     
                     //remove j from the left side , and create a funct dep of the new left side -> right side, and add the new one to temp
                     
@@ -299,8 +304,8 @@ public class FuncDep {
                     List<String> temp_attr = new ArrayList <String>();
                     List<String> f_attr = new ArrayList <String>();
                     
-                    for (int e = 0; e < temp.size(); e++) {
-                        String g = temp.get(e);
+                    for (int e = 0; e < temp2.size(); e++) {
+                        String g = temp2.get(e);
                         
                         for (int n = 0; n < g.length(); n++) {
                             if ( Character.isLetter(g.charAt(n)) ) {
@@ -330,11 +335,10 @@ public class FuncDep {
                     
                     //if it is the same as the original closure, we replace the old left side with the new left side in f
                     
-                    if (findClosure(temp_attr, temp).equals(findClosure(f_attr,f))) {
+                    if (findClosure(temp_attr, temp2).equals(findClosure(f_attr,f))) {
                         System.out.println("closure is equal"); 
                         System.out.println(f.get(i));
-                        f.remove(i);
-                        f.add(i, new_left + "->" + right_side);
+                        f.remove(i);;
                     } else {
                         System.out.println("closure is not equal");
                     }
@@ -364,16 +368,11 @@ public class FuncDep {
                         break;
                     
                     //we re-add funct dep i to temp, to keep the size right so we dont run into array index out of bounds issues in the following iterations
-            
-                    temp.remove(i); //we need to again remove the new thing we changed to. at most, we are manipulating our final answer f
                 
                     temp.add(i, s);
                     
                     //end of new if statement
-                    
-                  
-                
-                   
+                            
             
         }       
         
