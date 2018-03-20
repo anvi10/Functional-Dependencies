@@ -125,12 +125,19 @@ public class FuncDep {
                 int iter = 0;
                 while ( iter < l ) {
                     f.add( left_side + "->" + right_side.charAt(iter) ); //double check right_side.charAt(iter)  
+                iter++;
                 }
                 
             } else { // else block exists for debugging purposes only 
                 System.out.println( "The short funct dep is " + fds.get(j) + " and the right side of it is " + right_side  );
             }
+            
         } 
+        
+        for (int i = 0; i < f.size(); i++) {
+            System.out.println("The value at " + i + " is " + f.get(i));
+        }
+        
 
 	return null;
 	}
