@@ -118,7 +118,7 @@ public class FuncDep {
 			String right_side = split_tokens[1] ;
             
             if (right_side.length() > 1) {
-                System.out.println( "The long funct dep is " + fds.get(j) + " and the right side of it is " + right_side  );
+
                 
                 //break the long ones into different fds
                 
@@ -132,7 +132,7 @@ public class FuncDep {
                 }
                 
             } else { // else block exists for debugging purposes only 
-                System.out.println( "The short funct dep is " + fds.get(j) + " and the right side of it is " + right_side  );
+
             }
             
         } 
@@ -146,7 +146,7 @@ public class FuncDep {
         
         //Step 3 of algorithm
         for (int i = 0; i < f.size(); i++) {
-            System.out.println("The value at " + i + " is " + f.get(i));
+        
             
             String split_tokens[] = f.get(i).split("->");
             String left_side = split_tokens[0];
@@ -160,7 +160,7 @@ public class FuncDep {
                     
                     
 
-                    System.out.println ( "entered for loop");
+          
                     //save temp.get(i) as a string
                     
                     String s = temp.get(i); //s is our saved dependency
@@ -176,11 +176,8 @@ public class FuncDep {
                     
                     temp.add( i, new_left + "->" + right_side );  //its now the value at i
                     
-                    for (int t = 0; t < temp.size(); t++) {
-                        System.out.println( temp.get(t) + " is temps value at " + t + "after adding our newleft and new right" ); 
-                    }
-                    
-                     System.out.println();
+
+
                     
                                         
                     //find the closure of this new temp. 
@@ -196,7 +193,7 @@ public class FuncDep {
                         
                         for (int n = 0; n < g.length(); n++) {
                             if ( Character.isLetter(g.charAt(n)) ) {
-                                System.out.println( "for temp The character is " + g.charAt(n) + " index " + n);
+                 
                                 temp_attr.add(Character.toString(g.charAt(n)));
                             }
                         }
@@ -204,7 +201,7 @@ public class FuncDep {
                     
                     temp_attr = new ArrayList<String>(new HashSet<String>(temp_attr)); //change to a hashset and back to delete duplicates
                     
-                    System.out.println();
+                    
                     
                                         
                     for (int e = 0; e < f.size(); e++) {
@@ -212,7 +209,7 @@ public class FuncDep {
                         
                         for (int n = 0; n < g.length(); n++) {
                             if ( Character.isLetter(g.charAt(n)) ) {
-                                System.out.println( "for f The character is " + g.charAt(n) + " index n");
+                              
                                 f_attr.add(Character.toString(g.charAt(n)));
                             }
                         }
@@ -223,16 +220,12 @@ public class FuncDep {
                     //if it is the same as the original closure, we replace the old left side with the new left side in f
                     
                     if (findClosure(temp_attr, temp).equals(findClosure(f_attr,f))) {
-                        System.out.println("closure is equal"); 
-                        System.out.println(f.get(i));
-                        System.out.println( new_left + "->" + right_side );
+
                         f.remove(i);
                         f.add(i, new_left + "->" + right_side);
-                    } else {
-                        System.out.println("closure is not equal");
-                    }
+                    } 
                     
-                    System.out.println();
+                 
                     
                     boolean breakout = false;
                     
