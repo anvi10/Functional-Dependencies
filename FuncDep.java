@@ -100,13 +100,15 @@ public class FuncDep {
 
 		List<String> temp = new ArrayList <String>(fds.size()); //we will manipulate this and remove variables
 
+        //Step 1 of algorithm
 		int z = 0;
 		while (z < fds.size()) {
 			f.add(fds.get(z));
-			temp.add(fds.get(z));
+			//temp.add(fds.get(z));
         z++;
 		} 
         
+        //Step 2 of algorithm
         for (int j = 0; j < fds.size(); j++) {
 			
 			String split_tokens[] = fds.get(j).split("->");
@@ -134,8 +136,25 @@ public class FuncDep {
             
         } 
         
+        //populate temp with the values of our current f
+        int c = 0;
+        while (c < f.size()) {
+            temp.add(f.get(c));
+        c++;
+        }
+        
+        //Step 3 of algorithm
         for (int i = 0; i < f.size(); i++) {
             System.out.println("The value at " + i + " is " + f.get(i));
+            
+            String split_tokens[] = f.get(i).split("->");
+            String left_side = split_tokens[0];
+            String right_side = split_tokens[1] ;
+            
+            //left_side length must be greater than 1, or else if we remove every attribute B (and theres only one), the left side would be null
+            if (left_side.length() > 1) {
+                System.out.println("left side is " + left_side + " and length is " + left_side.length() + " iteration number " + i);
+            }
         }
         
 
