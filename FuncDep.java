@@ -98,8 +98,10 @@ public class FuncDep {
 
 		List<String> f = new ArrayList <String>(fds.size()); //this will be our min cover
 
-		List<String> temp = new ArrayList <String>(fds.size()); //we will manipulate this and remove variables
+		List<String> temp = new ArrayList <String>(fds.size()); //we will manipulate this and remove variables for step3 of algorithm
 
+        List<String> temp2 = new ArrayList <String>(fds.size()); //we will manipulate this and remove variables for step4 of algorithm
+        
         //Step 1 of algorithm
 		int z = 0;
 		while (z < fds.size()) {
@@ -140,6 +142,7 @@ public class FuncDep {
         int c = 0;
         while (c < f.size()) {
             temp.add(f.get(c));
+            temp2.add(f.get(c));
         c++;
         }
         
@@ -271,6 +274,111 @@ public class FuncDep {
             
         }
 
+        
+        //step 4 of algorithm
+         for (int i = 0; i < f.size(); i++) {
+
+                    
+
+                    System.out.println ( "entered for loop");
+                    //save temp.get(i) as a string
+                    
+                    String s = temp.get(i); //s is our saved dependency
+                    
+                    //remove the funct dep i from temp
+                    
+                    temp.remove(i);
+                    
+                    //remove j from the left side , and create a funct dep of the new left side -> right side, and add the new one to temp
+                    
+                    //find the closure of this new temp. 
+                    
+                    //since findClosure takes two params, attr and fds, we need to make attr string lists for both temp and for f
+                    
+                    
+                    List<String> temp_attr = new ArrayList <String>();
+                    List<String> f_attr = new ArrayList <String>();
+                    
+                    for (int e = 0; e < temp.size(); e++) {
+                        String g = temp.get(e);
+                        
+                        for (int n = 0; n < g.length(); n++) {
+                            if ( Character.isLetter(g.charAt(n)) ) {
+                                System.out.println( "for temp The character is " + g.charAt(n) + " index " + n);
+                                temp_attr.add(Character.toString(g.charAt(n)));
+                            }
+                        }
+                    }
+                    
+                    temp_attr = new ArrayList<String>(new HashSet<String>(temp_attr)); //change to a hashset and back to delete duplicates
+                    
+                    System.out.println();
+                    
+                                        
+                    for (int e = 0; e < f.size(); e++) {
+                        String g = f.get(e);
+                        
+                        for (int n = 0; n < g.length(); n++) {
+                            if ( Character.isLetter(g.charAt(n)) ) {
+                                System.out.println( "for f The character is " + g.charAt(n) + " index n");
+                                f_attr.add(Character.toString(g.charAt(n)));
+                            }
+                        }
+                    }
+                    
+                    f_attr = new ArrayList<String>(new HashSet<String>(f_attr));
+                    
+                    //if it is the same as the original closure, we replace the old left side with the new left side in f
+                    
+                    if (findClosure(temp_attr, temp).equals(findClosure(f_attr,f))) {
+                        System.out.println("closure is equal"); 
+                        System.out.println(f.get(i));
+                        f.remove(i);
+                        f.add(i, new_left + "->" + right_side);
+                    } else {
+                        System.out.println("closure is not equal");
+                    }
+                    
+                    System.out.println();
+                    
+                    boolean breakout = false;
+                    
+                    for (int y = 0 ; y < f.size(); y++) {
+                        System.out.println ("The values of f are now " + f.get(y) + " at index " + y);
+                        String splitted_tokens[] = f.get(i).split("->");
+                        String left_attributes = splitted_tokens[0];
+                        if (left_attributes.length() == 1 ) {
+                            System.out.println("breakout is true");
+                            breakout = true;
+                        } else {
+                            breakout = false;
+                            System.out.println("break out is false. breaking out of this loop " + y) ;
+                            break;
+                        }
+                    }
+                    
+                    System.out.println("value of breakout is " + breakout);
+                    
+                    //there are no left side attributes greater than size 1, so we are completely leaving this for loop
+                    if (breakout == true) 
+                        break;
+                    
+                    //we re-add funct dep i to temp, to keep the size right so we dont run into array index out of bounds issues in the following iterations
+            
+                    temp.remove(i); //we need to again remove the new thing we changed to. at most, we are manipulating our final answer f
+                
+                    temp.add(i, s);
+                    
+                    //end of new if statement
+                    
+                  
+                
+                   
+            
+        }       
+        
+        
+        
         for (int w = 0; w <f.size(); w++) {
             System.out.println(f.get(w) + " hey " + w);
         }
