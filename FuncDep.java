@@ -256,7 +256,6 @@ public class FuncDep {
         }
 
         
-        
         List<String> temp2 = new ArrayList <String>(f.size()); //we will manipulate this and remove variables for step4 of algorithm
         
         for (int x = 0; x <f.size(); x++) {
@@ -424,6 +423,7 @@ public class FuncDep {
         List<String> g = findMinCover(fds);
         List<String> d = new ArrayList <String>();
         
+        //Step 2 of algorithm
         for (int i = 0; i < g.size(); i++) {
            System.out.println(  "the value at " + i + " is "  + g.get(i)  );
             String split_tokens[] = g.get(i).split("->");
@@ -434,10 +434,20 @@ public class FuncDep {
             System.out.println(d.get(i) + " is ds value");
             
         }
+     
+        
+        //step 3 of algorithm //how do i do the checking
         
         List<String> key = findKey(attr, fds);
         System.out.println("key is " + key);
-		return null;
+        
+        for (int i = 0 ; i < key.size(); i++) {
+            
+        }
+        
+        //step 4 of the algorithm is removing redundant relations
+        
+		return null; //last step is returning d
 	}
 	
 }
