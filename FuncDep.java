@@ -371,16 +371,12 @@ public class FuncDep {
                 
                     temp.add(i, s);
                     
-                    //end of new if statement
-                            
+                    //end of new if statement               
             
         }       
         
         
         
-        for (int w = 0; w <f.size(); w++) {
-            System.out.println(f.get(w) + " hey " + w);
-        }
 
 	return f;
 	}
